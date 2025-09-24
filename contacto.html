@@ -34,19 +34,53 @@
         </div>
     </header>
 
-    <section class="container section">
+    <section class="container section contact-section">
       <h2>Hablemos</h2>
-      <p class="lead">Cuéntanos sobre tu proyecto y te responderemos a la brevedad.</p>
-      <form action="mailto:ignacio@datakomerz.com" method="POST" enctype="text/plain" style="max-width:520px;margin:auto;background:white;border:1px solid #e6e8ee;border-radius:16px;padding:1rem">
-        <label>Nombre:<br><input type="text" name="nombre" required style="width:100%;padding:0.6rem;margin-bottom:0.8rem"></label>
-        <label>Empresa:<br><input type="text" name="empresa" style="width:100%;padding:0.6rem;margin-bottom:0.8rem"></label>
-        <label>Email:<br><input type="email" name="email" required style="width:100%;padding:0.6rem;margin-bottom:0.8rem"></label>
-        <label>Teléfono:<br><input type="text" name="telefono" value="+56 9 8466 4812" style="width:100%;padding:0.6rem;margin-bottom:0.8rem"></label>
-        <label>Mensaje:<br><textarea name="mensaje" required rows="4" style="width:100%;padding:0.6rem;margin-bottom:0.8rem"></textarea></label>
-        <button type="submit" class="btn btn-primario" style="width:100%">Enviar</button>
-      </form>
-      <div style="margin-top:1.2rem;text-align:center">
-        <p>O escríbenos directamente a <a href="mailto:ignacio@datakomerz.com">ignacio@datakomerz.com</a> o por WhatsApp: <a href="https://wa.me/56984664812" target="_blank">+56 9 8466 4812</a></p>
+      <p class="lead">Cuéntanos sobre tu proyecto y coordinamos una sesión para entender necesidades, prioridades y próximos pasos.</p>
+      <div class="contact-grid">
+        <div class="contact-card contact-card--info">
+          <h3>Agenda una conversación</h3>
+          <p>Nos enfocamos en comprender tu contexto para recomendar la combinación correcta de estrategia, desarrollo y crecimiento.</p>
+          <ul class="contact-highlights">
+            <li><strong>Email</strong><a href="mailto:ignacio@datakomerz.com">ignacio@datakomerz.com</a></li>
+            <li><strong>WhatsApp</strong><a href="https://wa.me/56984664812" target="_blank" rel="noopener">+56 9 8466 4812</a></li>
+            <li><strong>Horario</strong><span>Lunes a viernes · 09:00 a 18:00 (GMT-4)</span></li>
+            <li><strong>Ubicación</strong><span>Santiago, Chile</span></li>
+          </ul>
+          <div class="contact-badges">
+            <span class="contact-badge">Respuesta en 24h</span>
+            <span class="contact-badge">Sin costo inicial</span>
+          </div>
+          <p class="small">Si prefieres, también podemos coordinar una videollamada para revisar tus desafíos y compartir referencias de proyectos afines.</p>
+        </div>
+        <form
+          class="contact-card contact-card--form contact-form"
+          action="mailto:ignacio@datakomerz.com"
+          method="POST"
+          enctype="text/plain">
+          <div class="form-field">
+            <span>Nombre</span>
+            <input type="text" name="nombre" placeholder="Cómo te llamas" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <span>Empresa</span>
+            <input type="text" name="empresa" placeholder="Nombre de la empresa" autocomplete="organization">
+          </div>
+          <div class="form-field">
+            <span>Email</span>
+            <input type="email" name="email" placeholder="Tu correo de contacto" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <span>Teléfono</span>
+            <input type="tel" name="telefono" placeholder="Ej. +56 9 8466 4812" autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <span>Mensaje</span>
+            <textarea name="mensaje" rows="4" placeholder="Cuéntanos qué necesitas" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primario">Enviar mensaje</button>
+          <p class="form-footnote">Respondemos en menos de un día hábil.</p>
+        </form>
       </div>
     </section>
     
