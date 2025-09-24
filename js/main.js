@@ -60,6 +60,124 @@
     });
   };
 
+  const runIntroScreen = () => {
+    const intro = document.getElementById('introScreen');
+    if (!intro) return;
+
+    const typing = intro.querySelector('[data-intro-typing]');
+    const texts = typing ? (typing.dataset.introTexts || '').split('|').map((text) => text.trim()).filter(Boolean) : [];
+    const typeSpeed = 78;
+    const deleteSpeed = 42;
+
+    const handleKeyDown = (event) => {
+      if (!intro.classList.contains('is-ready')) return;
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        hideIntro();
+      }
+    };
+
+    const hideIntro = () => {
+      if (intro.classList.contains('is-hidden')) return;
+      intro.classList.add('is-hidden');
+      intro.setAttribute('aria-hidden', 'true');
+      intro.removeEventListener('click', handleClick);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('has-intro');
+      window.setTimeout(() => {
+        if (intro && intro.parentElement) {
+          intro.parentElement.removeChild(intro);
+        }
+      }, 700);
+    };
+
+    const setReady = () => {
+      intro.classList.add('is-ready');
+      document.addEventListener('keydown', handleKeyDown);
+    };
+
+    const handleClick = () => {
+      if (!intro.classList.contains('is-ready')) return;
+      hideIntro();
+    };
+
+    intro.addEventListener('click', handleClick);
+    document.body.classList.add('has-intro');
+
+    if (!typing || !texts.length) {
+      if (typing) {
+        typing.textContent = '';
+      }
+      setReady();
+      return;
+    }
+
+    if (prefersReducedMotion) {
+      typing.textContent = texts[texts.length - 1];
+      setReady();
+      return;
+    }
+
+    typing.textContent = '';
+
+    const typeText = (text, onComplete) => {
+      if (!text) {
+        if (typeof onComplete === 'function') {
+          onComplete();
+        }
+        return;
+      }
+
+      let index = 0;
+      const step = () => {
+        typing.textContent = text.slice(0, index);
+        if (index < text.length) {
+          index += 1;
+          window.setTimeout(step, typeSpeed);
+        } else if (typeof onComplete === 'function') {
+          window.setTimeout(onComplete, 900);
+        }
+      };
+
+      step();
+    };
+
+    const deleteText = (onComplete) => {
+      const step = () => {
+        const current = typing.textContent || '';
+        if (!current.length) {
+          if (typeof onComplete === 'function') {
+            window.setTimeout(onComplete, 420);
+          }
+          return;
+        }
+
+        typing.textContent = current.slice(0, -1);
+        window.setTimeout(step, deleteSpeed);
+      };
+
+      step();
+    };
+
+    const playSequence = (index = 0) => {
+      const text = texts[index];
+      if (typeof text !== 'string') {
+        setReady();
+        return;
+      }
+
+      typeText(text, () => {
+        if (index < texts.length - 1) {
+          deleteText(() => playSequence(index + 1));
+        } else {
+          setReady();
+        }
+      });
+    };
+
+    playSequence(0);
+  };
+
   const runReveal = () => {
     const items = document.querySelectorAll('.reveal');
     if (!items.length) return;
@@ -118,6 +236,7 @@
   };
 
   document.addEventListener('DOMContentLoaded', () => {
+    runIntroScreen();
     runTypewriter();
     runReveal();
     runHeroParallax();
