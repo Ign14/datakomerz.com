@@ -11,7 +11,7 @@
     <meta property="og:url" content="https://datakomerz.com">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="css/estilos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@700;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700&family=Bodoni+Moda:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/icons/favicon.ico">
 
 </head>
@@ -34,45 +34,64 @@
         </div>
     </header>
 
-    <div class="hero-wrap">
-      <section class="container hero">
+    <div class="hero-cover">
+      <div class="cover-canvas" aria-hidden="true">
+        <span class="cover-shape cover-shape--triangle"></span>
+        <span class="cover-shape cover-shape--circle"></span>
+        <span class="cover-shape cover-shape--cube"></span>
+        <span class="cover-shape cover-shape--beam"></span>
+        <span class="cover-grid"></span>
+      </div>
+      <section class="container hero reveal" id="inicio">
         <div class="hero-copy">
-          <span class="eyebrow">Arquitectura digital radical</span>
-          <h1><span>Desatamos</span> el crecimiento exponencial de tu negocio</h1>
-          <p>Orquestamos estrategias, experiencias y productos digitales con data en tiempo real, prototipado ágil y automatización inteligente para conquistar mercados.</p>
+          <span class="eyebrow hero-eyebrow">Arquitectura digital radical</span>
+          <h1 class="hero-title" aria-live="polite">
+            <span class="hero-title-line">
+              <span class="hero-title-brush">Geometría digital,</span>
+            </span>
+            <span class="hero-title-line">
+              <span class="hero-title-brush hero-title-brush--delay">impacto humano.</span>
+            </span>
+          </h1>
+          <p class="hero-tagline" data-typewriter="Convertimos datos en experiencias sensibles que se adaptan a cada usuario en tiempo real."></p>
           <div class="cta-row">
             <a class="btn btn-primario" href="contacto.html">Solicita una consulta</a>
             <a class="btn btn-ghost" href="servicios.html">Ver servicios</a>
           </div>
           <div class="hero-insights">
             <div class="insight-card">
-              <span class="label">+35%</span>
-              <span class="sub">Tasa de conversión</span>
+              <span class="label">+48%</span>
+              <span class="sub">Conversiones curadas</span>
             </div>
             <div class="insight-card">
-              <span class="label">4.9/5</span>
-              <span class="sub">Satisfacción clientes</span>
+              <span class="label">9 países</span>
+              <span class="sub">Ecosistemas activados</span>
             </div>
             <div class="insight-card">
-              <span class="label">∞</span>
-              <span class="sub">Innovación continua</span>
+              <span class="label">24/7</span>
+              <span class="sub">Experimentación viva</span>
             </div>
           </div>
         </div>
-        <div class="hero-art">
-          <div class="halo"></div>
-          <div class="orb orb-a"></div>
-          <div class="orb orb-b"></div>
-          <div class="orb orb-c"></div>
-          <div class="mesh"></div>
-          <div class="pill pill-a">Automatización</div>
-          <div class="pill pill-b">Data Driven</div>
-          <div class="pill pill-c">Experiencias</div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-stage">
+            <span class="hero-shape hero-shape--sun"></span>
+            <span class="hero-shape hero-shape--ring"></span>
+            <span class="hero-shape hero-shape--triangle"></span>
+            <span class="hero-shape hero-shape--cube"></span>
+            <span class="hero-shape hero-shape--pixel"></span>
+          </div>
+          <div class="hero-glass">
+            <div class="hero-glass__tag">DataKomerz</div>
+            <div class="hero-glass__pill">Automatización</div>
+            <div class="hero-glass__pill">Analítica viva</div>
+            <div class="hero-glass__pill">Experiencias</div>
+          </div>
         </div>
       </section>
     </div>
 
-    <section class="container section">
+    <section class="container section reveal">
       <h2>Servicios</h2>
       <p class="lead">Soluciones integrales de punta a punta para acelerar tu transformación digital.</p>
       <div class="cards">
@@ -85,7 +104,7 @@
       </div>
     </section>
 
-    <section class="container section">
+    <section class="container section reveal">
       <div class="why">
         <h2>¿Por qué elegirnos?</h2>
         <div class="why-grid">
@@ -97,7 +116,7 @@
       </div>
     </section>
 
-    <section class="container section section-proyectos">
+    <section class="container section section-proyectos reveal">
       <div class="projects-intro">
         <span class="eyebrow">Proyectos y portafolio</span>
         <h2>PYMER en acción</h2>
@@ -123,7 +142,7 @@
       </div>
     </section>
 
-    <section class="container section">
+    <section class="container section reveal">
       <div class="cta">
         <div><h3>¿Listo para dar el siguiente paso digital?</h3><p class="small">Hablemos sobre tus objetivos y cómo alcanzarlos.</p></div>
         <a class="btn btn-primario" href="contacto.html">Contactar ahora</a>
@@ -159,7 +178,7 @@
         </div>
     </footer>
 
-    <button onclick="openChat()" style="position:fixed;right:18px;bottom:18px;border:none;border-radius:999px;background:white;padding:10px 14px;box-shadow:0 8px 24px rgba(2,6,23,0.12);cursor:pointer">Chat</button>
+    <button class="chat-trigger" onclick="openChat()">Chat</button>
     <script src="js/main.js"></script>
 </body>
 </html>
