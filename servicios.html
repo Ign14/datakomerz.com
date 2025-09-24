@@ -56,16 +56,16 @@
             </div>
             <div>
                 <h4>Contacto</h4>
-                <ul class="small">
-                    <li>Email: <a href="mailto:ignacio@datakomerz.com">ignacio@datakomerz.com</a></li>
-                    <li>Teléfono: <a href="tel:+56984664812">+56 9 8466 4812</a></li>
-                    <li>WhatsApp: <a target="_blank" rel="noopener" href="https://wa.me/56984664812">https://wa.me/56984664812</a></li>
-                    <li>Dirección: Santiago, Chile</li>
+                <ul class="small footer-list">
+                    <li><span class="footer-label">Email</span><a href="mailto:ignacio@datakomerz.com">ignacio@datakomerz.com</a></li>
+                    <li><span class="footer-label">Teléfono</span><a href="tel:+56984664812">+56 9 8466 4812</a></li>
+                    <li><span class="footer-label">WhatsApp</span><a target="_blank" rel="noopener" href="https://wa.me/56984664812">wa.me/56984664812</a></li>
+                    <li><span class="footer-label">Dirección</span><span>Santiago, Chile</span></li>
                 </ul>
             </div>
             <div>
                 <h4>Enlaces</h4>
-                <ul class="small">
+                <ul class="small footer-list">
                     <li><a href="nosotros.html">Nosotros</a></li>
                     <li><a href="portafolio.html">Portafolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
@@ -74,6 +74,22 @@
             </div>
         </div>
     </footer>
+
+    <button class="chat-trigger" type="button" onclick="openChat()" aria-haspopup="dialog" aria-controls="chatWidget">Chat</button>
+    <div class="chat-widget" id="chatWidget" role="dialog" aria-modal="false" aria-hidden="true">
+      <div class="chat-header">
+        <span class="chat-whatsapp-icon" aria-hidden="true"></span>
+        <div>
+          <p class="chat-title">WhatsApp • DataKomerz</p>
+          <p class="chat-subtitle">Ignacio responde en minutos</p>
+        </div>
+        <button class="chat-close" type="button" aria-label="Cerrar chat" onclick="closeChat()">×</button>
+      </div>
+      <div class="chat-body">
+        <div class="chat-bubble">Hola DataKomerz 👋 Me interesa impulsar mi negocio con soluciones digitales.</div>
+        <a class="chat-send" target="_blank" rel="noopener" href="https://wa.me/56984664812?text=Hola%20DataKomerz%20%F0%9F%91%8B%20Me%20interesa%20impulsar%20mi%20negocio%20con%20soluciones%20digitales.">Enviar a WhatsApp</a>
+      </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
