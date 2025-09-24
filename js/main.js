@@ -1,6 +1,10 @@
 // Interacciones y animaciones de la portada DataKomerz
 (function(){
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let chatWidget;
+  let chatCloseBtn;
+  let chatSendLink;
+  const CHAT_MESSAGE = 'Hola DataKomerz 👋 Me interesa impulsar mi negocio con soluciones digitales.';
 
   const createToast = (message) => {
     if (!message) return;
@@ -117,9 +121,58 @@
     runTypewriter();
     runReveal();
     runHeroParallax();
+
+    chatWidget = document.getElementById('chatWidget');
+    if (chatWidget) {
+      chatCloseBtn = chatWidget.querySelector('.chat-close');
+      chatSendLink = chatWidget.querySelector('.chat-send');
+      chatWidget.setAttribute('aria-hidden', 'true');
+
+      if (chatCloseBtn) {
+        chatCloseBtn.addEventListener('click', () => {
+          closeChat();
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && chatWidget.classList.contains('is-open')) {
+          closeChat();
+        }
+      });
+    }
   });
 
-  window.openChat = () => {
-    createToast('Hola 👋 Somos DataKomerz. Envíanos un mensaje y diseñemos experiencias geométricas juntos.');
+  const toggleChat = (open) => {
+    if (!chatWidget) {
+      createToast('Hola 👋 Somos DataKomerz. Envíanos un mensaje y diseñemos experiencias geométricas juntos.');
+      return;
+    }
+
+    chatWidget.classList.toggle('is-open', open);
+    chatWidget.setAttribute('aria-hidden', open ? 'false' : 'true');
+
+    if (open) {
+      createToast('Listo para conversar por WhatsApp 🚀');
+      const bubble = chatWidget.querySelector('.chat-bubble');
+      if (bubble) {
+        bubble.textContent = CHAT_MESSAGE;
+      }
+      if (chatSendLink) {
+        chatSendLink.setAttribute('href', `https://wa.me/56984664812?text=${encodeURIComponent(CHAT_MESSAGE)}`);
+        window.setTimeout(() => chatSendLink.focus(), 120);
+      }
+    }
   };
+
+  const openChat = () => {
+    const shouldOpen = !chatWidget || !chatWidget.classList.contains('is-open');
+    toggleChat(shouldOpen);
+  };
+
+  const closeChat = () => {
+    toggleChat(false);
+  };
+
+  window.openChat = openChat;
+  window.closeChat = closeChat;
 })();
